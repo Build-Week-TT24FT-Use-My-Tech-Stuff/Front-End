@@ -1,9 +1,38 @@
 import React from "react";
 import { Route, NavLink } from "react-router-dom";
-import Login from "./components/Login";
-import HomePage from './components/HomePage'
-import SignUp from './components/SignUp'
+import Login from "./Components/Login";
+import HomePage from './Components/HomePage'
+import SignUp from './Components/SignUp'
 import "./App.css";
+
+
+const initialLoginValues = {
+  // Text Inputs
+  username: '',
+  password: '', 
+};
+
+const initialSignUpValues = {
+  username: '', //textbox
+  email: '', //textbox
+  password: '', //textbox
+  role: false, // checkbox
+  terms: false, // checkbox
+};
+
+const initialFormErrors = {
+  name: '',  // being blank, it's an error
+  password: '', // being blank, it's an 
+}
+
+const initialForm = []; // starting form is an EMPTY ARRAY, each form is an OBJECT
+const initialDisabled = true;
+
+export default function App() {
+  // STATES //
+const [login, setLogin] = useState(initialLoginValues);
+
+
 
 function App() {
 	return (

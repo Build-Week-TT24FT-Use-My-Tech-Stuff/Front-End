@@ -32,7 +32,7 @@ const SignUp = (props) => {
     }
     const handleSubmit = (e) => {
         e.preventDefault();
-        props.signUpSubmit(values.username, values.password, values.email, push)
+        props.submit()
     }
     return (
         <div className='sign-up-form'>
