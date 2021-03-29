@@ -1,15 +1,12 @@
 import React, {useEffect} from 'react'
-import { connect } from "react-redux";
 import formSchema from '../validation/formSchema'
-import {signUpSubmit, setValues, setDisabled, setErrors, clearForm} from '../actions/signUpActions'
 import * as yup from "yup";
 
 const SignUp = (props) => {
+
     const {values, errors, disabled} = props
-    const {push} = props.history
 
     useEffect(() => {
-
         formSchema
             .isValid(values)
             .then(valid => props.setDisabled(!valid))
@@ -21,8 +18,10 @@ const SignUp = (props) => {
          // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
-    const handleChanges = (e) => {
-        const {value, name} = e.target
+    const handleChanges = (event) => {
+
+    const {value, name} = event.target
+
         yup
         .reach(formSchema,name)
         .validate(value)
@@ -35,16 +34,17 @@ const SignUp = (props) => {
         props.setValues(value,name)
     }
 
-        const handleSubmit = (e) => {
-            e.preventDefault();
-            props.signUpSubmit(values.username, values.password, values.email, push)
-        }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        props.submit()
+    }
 
     return (
 
         <div className='sign-up-form'>
-           <form onSubmit={handleSubmit}>
-            <h3>Please Enter Your Information</h3>
+
+        <form onSubmit={handleSubmit}>
+            <h2>Please Enter Your Information</h2>
 
             <div className='errors'>
                 <div>{errors.username}</div>
@@ -59,7 +59,7 @@ const SignUp = (props) => {
                         type='text'
                         onChange={handleChanges}
                         value={values.name}
-                        placeholder='Enter Full Name'
+                        placeholder='Please enter your full name'
                     />
                 </label>
                 <label>Username:
@@ -68,7 +68,7 @@ const SignUp = (props) => {
                         type='text'
                         onChange={handleChanges}
                         value={values.username}
-                        placeholder='Enter a Username'
+                        placeholder='Please enter a unique username'
                     />
                 </label>
                 <label>Email:
@@ -77,9 +77,9 @@ const SignUp = (props) => {
                         type='text'
                         onChange={handleChanges}
                         value={values.email}
-                        placeholder='Email'
                     />
                 </label>
+
                 <label>Password:
                     <input
                         type='password'
@@ -88,18 +88,21 @@ const SignUp = (props) => {
                         value={values.password}
                     />
                 </label>
+
+                <label>Terms and Conditions:
+                    <input
+                        type='checkbox'
+                        name='terms'
+                        onChange={handleChanges}
+                        value={values.terms}
+                    />
+                </label>
+
             </div>
-            <button disabled={disabled}>Submit</button>
+            <button disabled={disabled}>Create Account</button>
         </form>
         </div>
     )
 }
 
-const mapStateToProps = (state) => {
-    return {
-        values:state.signup.formValues,
-        errors:state.signup.formErrors,
-        disabled:state.signup.disabled
-    }
-}
-export default connect(mapStateToProps, {setErrors, signUpSubmit,setValues,setDisabled, clearForm})(SignUp);
+export default SignUp
