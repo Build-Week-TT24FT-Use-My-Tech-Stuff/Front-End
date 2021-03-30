@@ -1,10 +1,32 @@
 import {React} from 'react'
+import axios from 'axios';
+import {useState } from 'react'
 
+const initialUser = {
+	username: '',
+	password: ''
+};
 
-export default function Login(props) {
+export default function Login() {
 
-    const {username,password,change, submit} = props
+	const [user, setUser]= useState(initialUser);
 
+	const change = (e) => {
+		setUser({...user, [e.target.name]: e.target.value});
+	  }
+
+	const submit = e => {
+		e.preventDefault();
+		axios.post('https://tt-24-use-my-tech-stuff.herokuapp.com/api/users/login', user)
+		.then(res => {
+			console.log(res);
+			localStorage.setItem('token', res.data.token);
+			console.log(localStorage.token);
+		})
+		.catch(error => {
+			console.log(error);
+		})
+	};
 
 	return (
 		<>
@@ -15,7 +37,7 @@ export default function Login(props) {
 				<input
 					type="text"
 					name="username"
-					value={username}
+					value={user.username}
 					onChange={change}
 				/>
 			</label>
@@ -24,7 +46,7 @@ export default function Login(props) {
 				<input
 					type="password"
 					name="password"
-					value={password}
+					value={user.password}
 					onChange={change}
 				/>
 			</label>
