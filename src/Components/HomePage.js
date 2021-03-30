@@ -1,5 +1,10 @@
 import React from 'react'
+import CreatePostForm from './CreatePostForm';
 
 export default function HomePage() {
-    return <h2>Home</h2>;
+    return (
+    <div>
+      <h2>Home Page</h2>
+      <CreatePostForm/>
+    </div>)
   }
