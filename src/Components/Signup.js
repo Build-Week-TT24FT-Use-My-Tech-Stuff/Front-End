@@ -63,7 +63,7 @@ export default function SignUp(props) {
                 <label> Owner
                 <input
                     type="radio"
-                    name="owner"
+                    name="role"
                     value="owner"
                     checked={values.role === "owner"}
                 />
@@ -72,7 +72,7 @@ export default function SignUp(props) {
                 <label> Renter
                 <input
                     type="radio"
-                    name="renter"
+                    name="role"
                     value="renter"
                     checked={values.role === "renter"}
                 />
