@@ -86,7 +86,7 @@ const formSubmit = () => {
       username: suFormValues.name.trim(),
       email: suFormValues.email.trim(),
       password: suFormValues.password.trim(),
-      terms: suFormValues.termstermsOfService,
+      terms: suFormValues.termsOfService,
     };
     postNewUser(newUser);
   };
@@ -95,7 +95,7 @@ const formSubmit = () => {
     formSchema.isValid(suFormValues)
       .then(valid => {
         setDisabled(!valid)
-      }) 
+      })
   }, [suFormValues])
 
 return (
