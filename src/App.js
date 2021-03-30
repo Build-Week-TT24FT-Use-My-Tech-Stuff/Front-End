@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 // import { Route, NavLink } from "react-router-dom";
-// import Login from "./Components/Login";
+import Login from "./Components/Login";
 // import HomePage from './Components/HomePage'
 import SignUp from './Components/SignUp'
 import "./App.css";
@@ -15,7 +15,7 @@ const initialSUvalues = {
 	username: '', //textbox
 	email: '', //textbox
 	password: '', //textbox
-	role: false, // checkbox
+	role: false, // radio button
 	terms: false, // checkbox
 };
 
@@ -109,6 +109,7 @@ return (
             </div>
           )
         })}
+        <Login/>
     </div>
 	);
 }

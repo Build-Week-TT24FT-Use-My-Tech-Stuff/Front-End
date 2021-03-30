@@ -1,20 +1,18 @@
 import {React, useEffect} from 'react'
-import formSchema from '../validation/formSchema'
-
-
+// import formSchema from '../validation/formSchema'
 
 
 export default function SignUp(props) {
     const { values, submit, change, disabled, errors } = props;
 
     const onSubmit = (event) => {
-        event.preventDefault(); // stops page refresh, 
+        event.preventDefault(); // stops page refresh,
         submit(); // invokes the submit function
     };
 
     const onChange = (event) => {
-        const { name, value, type, checked } = event.target; 
-        const valueToUse = type === "checkbox" ? checked : value; 
+        const { name, value, type, checked } = event.target;
+        const valueToUse = type === "checkbox" ? checked : value;
         change(name, valueToUse);
     };
 
