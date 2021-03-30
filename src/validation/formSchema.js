@@ -12,6 +12,9 @@ const formSchema = yup.object().shape({
         .required('Password is required')
         .min(8, 'Password must be 8 characters or longer.'),
         //default password is 'password'
+    role: yup.string()
+        .required()
+        .oneOf (["owner","renter"], "Please choose an option of Owner or Renter"),
     terms: yup.boolean()
     .required('Please agree to our legal terms and conditions')
 });

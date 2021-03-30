@@ -63,18 +63,20 @@ export default function SignUp(props) {
                 <label> Owner
                 <input
                     type="radio"
-                    name="owner"
+                    name="role"
                     value="owner"
                     checked={values.role === "owner"}
+                    onChange={onChange}
                 />
                 </label>
                     <br/>
                 <label> Renter
                 <input
                     type="radio"
-                    name="renter"
+                    name="role"
                     value="renter"
                     checked={values.role === "renter"}
+                    onChange={onChange}
                 />
                 </label>
                 <br/>
@@ -83,6 +85,7 @@ export default function SignUp(props) {
                         type='checkbox'
                         name='terms'
                         checked={values.terms}
+                        onChange={onChange}
                     />
                 </label>
             </div>
