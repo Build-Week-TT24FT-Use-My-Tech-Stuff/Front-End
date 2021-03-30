@@ -1,7 +1,6 @@
 import {React} from 'react'
 import axios from 'axios';
 import {useState } from 'react'
-import axiosWithAuth from '../helpers/axiosWithAuth.js'
 
 const initialUser = {
 	username: '',
