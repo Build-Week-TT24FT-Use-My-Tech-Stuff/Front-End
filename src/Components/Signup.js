@@ -1,5 +1,4 @@
 import {React, useEffect} from 'react'
-import formSchema from '../validation/formSchema'
 
 
 
@@ -8,8 +7,8 @@ export default function SignUp(props) {
     const { values, submit, change, disabled, errors } = props;
 
     const onSubmit = (event) => {
-        event.preventDefault(); // stops page refresh, 
-        submit(); // invokes the submit function
+        event.preventDefault();
+        submit();
     };
 
     const onChange = (event) => {
@@ -24,28 +23,29 @@ export default function SignUp(props) {
             <h3>Sign up for an Account</h3>
 
             <div className='errors'>
-                <div>{errors.username}</div>
                 <div>{errors.email}</div>
                 <div>{errors.password}</div>
                 <div>{errors.terms}</div>
+                <div>{errors.username}</div>
             </div>
 
             <div className='inputs'>
-                <label>Username:
-                    <input
-                        name='username'
-                        type='text'
-                        placeholder='Choose a Username'
-                        maxLength="30"
-                        value={values.username}
-                        onChange={onChange}
-                    />
-                </label>
+            <label>Username:
+            <input
+                name='username'
+                type='text'
+                placeholder='Choose a Username'
+                maxLength="30"
+                value={values.username}
+                onChange={onChange}
+            />
+            </label>
                 <br/>
                 <label>Email:
                     <input
                         name='email'
                         type='text'
+                        placeholder='Your eMail address'
                         maxLength="50"
                         value={values.email}
                         onChange={onChange}
@@ -54,29 +54,32 @@ export default function SignUp(props) {
                 <br/>
                 <label>Password:
                     <input
-                        type='password'
                         name='password'
+                        type='password'
+                        placeholder='Choose a Password'
                         maxLength="30"
                         value={values.password}
                         onChange={onChange}
                     />
                 </label>
                 <br/>
-                <label> Owner
+                <label>Owner
                 <input
                     type="radio"
-                    name="owner"
+                    name="role"
                     value="owner"
                     checked={values.role === "owner"}
+                    onChange={onChange}
                 />
                 </label>
                     <br/>
-                <label> Renter
+                <label>Renter
                 <input
                     type="radio"
-                    name="renter"
+                    name="role"
                     value="renter"
                     checked={values.role === "renter"}
+                    onChange={onChange}
                 />
                 </label>
                 <br/>
@@ -85,6 +88,7 @@ export default function SignUp(props) {
                         type='checkbox'
                         name='terms'
                         checked={values.terms}
+                        onChange={onChange}
                     />
                 </label>
             </div>

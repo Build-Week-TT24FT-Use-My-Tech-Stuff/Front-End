@@ -1,11 +1,11 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect} from 'react';
 // import { Route, NavLink } from "react-router-dom";
 // import Login from "./Components/Login";
 // import HomePage from './Components/HomePage'
-import SignUp from './Components/SignUp'
+import SignUp from './Components/SignUp';
 import "./App.css";
-import axios from 'axios'
-import formSchema from './validation/formSchema'
+import axios from 'axios';
+import formSchema from './validation/formSchema';
 import * as yup from "yup";
 
 // INITIALIZATIONS //
@@ -24,7 +24,7 @@ const initialSUformErrors = {
 	username: '',
 	email: '',
 	password: '',
-	role: false,
+	role: '',
 	terms: false,
   };
 
@@ -86,7 +86,7 @@ const formSubmit = () => {
       username: suFormValues.name.trim(),
       email: suFormValues.email.trim(),
       password: suFormValues.password.trim(),
-      terms: suFormValues.termstermsOfService,
+    //   terms: suFormValues.terms,
     };
     postNewUser(newUser);
   };
