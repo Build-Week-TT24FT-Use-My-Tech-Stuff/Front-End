@@ -17,7 +17,7 @@ const formSchema = yup.object().shape({
         //default password is 'password'
     role: yup
         .string()
-        .oneOf(["owner, renter"], "Choose wether you are an Owner or Renter")
+        .oneOf(["owner", "renter"], "Choose whether you are an Owner or Renter")
         .required('Please indicate if you are an Owner or User'),
     terms: yup
         .boolean()

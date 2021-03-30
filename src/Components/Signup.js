@@ -1,8 +1,5 @@
 import {React, useEffect} from 'react'
 
-
-
-
 export default function SignUp(props) {
     const { values, submit, change, disabled, errors } = props;
 
@@ -21,7 +18,6 @@ export default function SignUp(props) {
     return (
         <form className='sign-up-form' onSubmit={onSubmit}>
             <h3>Sign up for an Account</h3>
-
             <div className='errors'>
                 <div>{errors.email}</div>
                 <div>{errors.password}</div>

@@ -1,8 +1,8 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react'
 // import { Route, NavLink } from "react-router-dom";
 // import Login from "./Components/Login";
 // import HomePage from './Components/HomePage'
-import SignUp from './Components/SignUp';
+import SignUp from './Components/SignUp'
 import "./App.css";
 import axios from 'axios';
 import formSchema from './validation/formSchema';
@@ -15,7 +15,7 @@ const initialSUvalues = {
 	username: '', //textbox
 	email: '', //textbox
 	password: '', //textbox
-	role: false, // checkbox
+	role: '', // checkbox
 	terms: false, // checkbox
 };
 
@@ -83,7 +83,7 @@ const [disabled, setDisabled] = useState(initialDisabled); // this is a boolean
 
 const formSubmit = () => {
     const newUser = {
-      username: suFormValues.name.trim(),
+      username: suFormValues.username.trim(),
       email: suFormValues.email.trim(),
       password: suFormValues.password.trim(),
     //   terms: suFormValues.terms,
