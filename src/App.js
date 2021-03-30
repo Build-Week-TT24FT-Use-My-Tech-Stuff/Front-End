@@ -11,12 +11,12 @@ import * as yup from "yup";
 // INITIALIZATIONS //
 const initialSUvalues = {
 
-
 	username: '', //textbox
 	email: '', //textbox
 	password: '', //textbox
 	role: false, // radio button
 	terms: false, // checkbox
+
 };
 
 const initialSUformErrors = {
@@ -26,6 +26,7 @@ const initialSUformErrors = {
 	password: '',
 	role: false,
 	terms: false,
+
   };
 
 const initialDisabled = true;
@@ -102,7 +103,7 @@ return (
     <Router>
       <div className="App">
         <nav>
-          <Link to="/home">
+          <Link to="/">
             Home
           </Link>
           <Link to="/signup">
@@ -112,10 +113,10 @@ return (
             Login
           </Link>
         </nav>
-        <Route path="/home">
+        <Route exact path="/">
           <HomePage/>
         </Route>
-        <Route exact path="/signup">
+        <Route path="/signup">
             <SignUp values={suFormValues} submit={formSubmit} change={inputChange} disabled={disabled} errors={formSUerrors} />
             {form.map((user, idx) => {
               return (
