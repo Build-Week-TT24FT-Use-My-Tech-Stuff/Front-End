@@ -14,7 +14,6 @@ export default function SignUp(props) {
         change(name, valueToUse);
     };
 
-
     return (
         <form className='sign-up-form' onSubmit={onSubmit}>
             <h3>Sign up for an Account</h3>

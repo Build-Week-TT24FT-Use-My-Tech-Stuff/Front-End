@@ -4,8 +4,8 @@ import React, {useState, useEffect} from 'react'
 // import HomePage from './Components/HomePage'
 import SignUp from './Components/SignUp'
 import "./App.css";
-import axios from 'axios';
-import formSchema from './validation/formSchema';
+import axios from 'axios'
+import formSchema from './validation/formSchema'
 import * as yup from "yup";
 
 // INITIALIZATIONS //
