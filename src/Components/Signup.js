@@ -20,13 +20,14 @@ export default function SignUp(props) {
 
 
     return (
-        <form className='sign-up-form' onSubmit={onSubmit}>>
+        <form className='sign-up-form' onSubmit={onSubmit}>
             <h3>Sign up for an Account</h3>
 
             <div className='errors'>
                 <div>{errors.username}</div>
                 <div>{errors.email}</div>
                 <div>{errors.password}</div>
+                <div>{errors.terms}</div>
             </div>
 
             <div className='inputs'>
