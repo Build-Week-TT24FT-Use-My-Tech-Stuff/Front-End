@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
-// import { Route, NavLink } from "react-router-dom";
+import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import Login from "./Components/Login";
-// import HomePage from './Components/HomePage'
+import HomePage from './Components/HomePage'
 import SignUp from './Components/SignUp'
 import "./App.css";
 import axios from 'axios'
@@ -99,17 +99,37 @@ const formSubmit = () => {
   }, [suFormValues])
 
 return (
-    <div className="App">
-        <SignUp values={suFormValues} submit={formSubmit} change={inputChange} disabled={disabled} errors={formSUerrors} />
-        {form.map((user, idx) => {
-          return (
-            <div key={idx}>
-            <h2>{user.name}</h2>
-            <p>{user.email}</p>
-            </div>
-          )
-        })}
-        <Login/>
+    <Router>
+      <div className="App">
+        <nav>
+          <Link to="/home">
+            Home
+          </Link>
+          <Link to="/signup">
+            Sign Up
+          </Link>
+          <Link to="/login">
+            Login
+          </Link>
+        </nav>
+        <Route path="/home">
+          <HomePage/>
+        </Route>
+        <Route exact path="/signup">
+            <SignUp values={suFormValues} submit={formSubmit} change={inputChange} disabled={disabled} errors={formSUerrors} />
+            {form.map((user, idx) => {
+              return (
+                <div key={idx}>
+                <h2>{user.name}</h2>
+                <p>{user.email}</p>
+                </div>
+              )
+            })}
+          </Route>
+        <Route path="/login">
+          <Login/>
+        </Route>
     </div>
+    </Router>
 	);
 }
