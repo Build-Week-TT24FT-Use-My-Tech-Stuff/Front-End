@@ -18,7 +18,7 @@ export default function SignUp(props) {
           push("/login");
         })
         .catch(err => {
-          console.loc(err.response);
+          console.log(err.response);
         })
     };
 
