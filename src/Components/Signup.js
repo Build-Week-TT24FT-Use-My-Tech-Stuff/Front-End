@@ -1,19 +1,32 @@
-import {React, useEffect} from 'react'
-// import formSchema from '../validation/formSchema'
+import React from 'react'
+import { useHistory } from 'react-router-dom';
+import axios from 'axios';
+
 
 
 export default function SignUp(props) {
     const { values, submit, change, disabled, errors } = props;
+    const { push } = useHistory();
 
     const onSubmit = (event) => {
-        event.preventDefault();
-        submit();
+        event.preventDefault(); // stops page refresh,
+        submit(); // invokes the submit function
+        axios
+        .post("https://tt-24-use-my-tech-stuff.herokuapp.com/api/users/signup")
+        .then(res => {
+        console.log('res', res);
+        push("/login");
+        })
+        .catch(err => {
+        console.loc(err.response);
+        })
     };
 
     const onChange = (event) => {
         const { name, value, type, checked } = event.target;
         const valueToUse = type === "checkbox" ? checked : value;
         change(name, valueToUse);
+        
     };
 
 

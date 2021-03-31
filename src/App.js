@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import Login from "./Components/Login";
 import HomePage from './Components/HomePage'
-import SignUp from './Components/SignUp'
+import SignUp from './Components/Signup'
 import "./App.css";
 import axios from 'axios'
 import formSchema from './validation/formSchema'
