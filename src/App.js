@@ -4,52 +4,9 @@ import Login from "./Components/Login";
 import HomePage from './Components/HomePage'
 import SignUp from './Components/Signup'
 import "./App.css";
-import axios from 'axios'
-import formSchema from './validation/formSchema'
-import * as yup from "yup";
-
-// INITIALIZATIONS //
-
-
-const initialForm = [];
-
 
 export default function App() {
 
-	// STATES //
-const [form, setForm] = useState(initialForm);
-
-
-
-//  AXIOS POST //
-  // const postNewUser = (newUser) => {
-  //   axios
-  //     .post("http://localhost:3000/", newUser)
-  //     .then((response) => {
-  //       setSUformValues([response.data, ...suFormValues]);
-  //       setSUformValues(initialSUvalues);
-  //       setDisabled(true);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // };
-
-
-  // EVENT HANDLERS //
-  
-
-// const formSubmit = () => {
-//     const newUser = {
-//       username: suFormValues.username.trim(),
-//       email: suFormValues.email.trim(),
-//       password: suFormValues.password.trim(),
-//       terms: suFormValues.termsOfService,
-//     };
-//     postNewUser(newUser);
-//   };
-
- 
 return (
     <Router>
       <div className="App">

@@ -3,9 +3,8 @@ import { useHistory } from 'react-router-dom';
 import * as yup from 'yup'
 import axios from 'axios';
 import formSchema from '../validation/formSchema'
-// import formSchema from '../validation/formSchema'
-const initialDisabled = true;
 
+const initialDisabled = true;
 
 const initialSUvalues = {
     username: '', //textbox
@@ -23,20 +22,14 @@ const initialSUformErrors = {
     terms: false,
   };
 
-export default function SignUp(props) {
-   
+export default function SignUp() {
+
     const [suFormValues, setSUformValues] = useState(initialSUvalues); // this is an object
     const [formSUerrors, setSUerrors] = useState(initialSUformErrors); // this is an object
     const [disabled, setDisabled] = useState(initialDisabled); // this is a boolean
     const { push } = useHistory();
-    
-    useEffect(() => {
-        formSchema.isValid(suFormValues)
-          .then(valid => {
-            setDisabled(!valid)
-          })
-      }, [suFormValues])
-    
+
+
     const change = (name, value) => {
         yup
           .reach(formSchema, name) // search the schema for 'name'
@@ -59,9 +52,16 @@ export default function SignUp(props) {
           [name]: value,
         });
       };
+
+      useEffect(() => {
+    formSchema.isValid(suFormValues)
+      .then(valid => {
+        setDisabled(!valid)
+      })
+  }, [suFormValues])
+
     const onSubmit = (event) => {
         event.preventDefault(); // stops page refresh,
-        // submit(); // invokes the submit function
         axios
         .post("https://tt-24-use-my-tech-stuff.herokuapp.com/api/users/signup", suFormValues)
         .then(res => {
@@ -77,7 +77,7 @@ export default function SignUp(props) {
         const { name, value, type, checked } = event.target;
         const valueToUse = type === "checkbox" ? checked : value;
         change(name, valueToUse);
-        
+
     };
 
 
