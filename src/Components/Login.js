@@ -1,23 +1,35 @@
-import {React} from 'react'
+import {React, useState, useEffect } from 'react'
 import axios from 'axios';
-import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import * as yup from 'yup'
+import loginSchema from '../validation/loginSchema'
 
 const initialUser = {
 	username: '',
 	password: ''
 };
 
+const initialErrors = {
+    username: '',
+    password: ''
+  };
+
+const initialDisabled = true;
+
 export default function Login() {
 
 	const [user, setUser]= useState(initialUser);
+	const [formErrors, setErrors] = useState(initialErrors);
+	const [disabled, setDisabled] = useState(initialDisabled); // this is a boolean
 	const history = useHistory();
 
-
+// update values of user
 	const change = (e) => {
 		setUser({...user, [e.target.name]: e.target.value});
+		validation(e.target.name, e.target.value)
 	  }
 
+// submit token
 	const submit = e => {
 		e.preventDefault();
 		axios.post('https://tt-24-use-my-tech-stuff.herokuapp.com/api/users/login', user)
@@ -33,9 +45,44 @@ export default function Login() {
 		})
 	};
 
+// valdiation function
+	const validation = (name, value) => {
+        yup
+          .reach(loginSchema, name) // search the schema for 'name'
+          .validate(value) // validate the entry (formValidation)
+          .then(() => {
+            setErrors({
+              ...formErrors,
+              [name]: "",
+            });
+          })
+          .catch((error) => {
+            setErrors({
+              ...formErrors,
+              // validation error from schema
+              [name]: error.errors,
+            });
+          });
+		  setUser({
+          ...user,
+          [name]: value,
+        });
+      };
+
+      useEffect(() => {
+    loginSchema.isValid(user)
+      .then(valid => {
+        setDisabled(!valid)
+      })
+  }, [user])
+
 	return (
 		<>
 		<h2>Login</h2>
+		<div className='errors'>
+                <div>{formErrors.username}</div>
+                <div>{formErrors.password}</div>
+        </div>
 		<form onSubmit={submit}>
 			<label>
 				Username:
@@ -44,6 +91,7 @@ export default function Login() {
 					name="username"
 					value={user.username}
 					onChange={change}
+					validation={validation}
 				/>
 			</label>
 			<label>
@@ -53,10 +101,11 @@ export default function Login() {
 					name="password"
 					value={user.password}
 					onChange={change}
+					validation={validation}
 				/>
 			</label>
 			<br/>
-			<button>Login</button>
+			<button disabled={disabled}>Login</button>
 		</form>
 		</>
 	);
