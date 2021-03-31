@@ -10,23 +10,19 @@ import * as yup from "yup";
 
 // INITIALIZATIONS //
 const initialSUvalues = {
-
 	username: '', //textbox
 	email: '', //textbox
 	password: '', //textbox
 	role: false, // radio button
 	terms: false, // checkbox
-
 };
 
 const initialSUformErrors = {
-
 	username: '',
 	email: '',
 	password: '',
 	role: false,
 	terms: false,
-
   };
 
 const initialDisabled = true;
@@ -84,7 +80,7 @@ const [disabled, setDisabled] = useState(initialDisabled); // this is a boolean
 
 const formSubmit = () => {
     const newUser = {
-      username: suFormValues.name.trim(),
+      username: suFormValues.username.trim(),
       email: suFormValues.email.trim(),
       password: suFormValues.password.trim(),
       terms: suFormValues.termsOfService,

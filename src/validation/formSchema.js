@@ -18,10 +18,12 @@ const formSchema = yup.object().shape({
     role: yup
         .string()
         .required()
-        .oneOf (["owner", "renter"], "Owner or Renter?"),
+        .oneOf (["owner", "renter"], "Owner or Renter"),
     terms: yup
         .boolean()
         .required('Please agree to our legal terms and conditions')
+
+const loginSchema = yup.object().shape
 });
 
 export default formSchema;
