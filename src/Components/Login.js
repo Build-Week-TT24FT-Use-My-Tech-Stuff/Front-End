@@ -1,28 +1,22 @@
-import {React, useEffect} from 'react'
+import {React} from 'react'
 import axios from 'axios';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 const initialUser = {
 	username: '',
-	password: '',
+	password: ''
 };
-
-const initialLoginErrors = {
-	username: '',
-	password: '',
-  };
 
 export default function Login() {
 
-	const [initialLoginErrors, setLoginErrors] = useState(initialLoginErrors);
 	const [user, setUser]= useState(initialUser);
 	const history = useHistory();
 
 
 	const change = (e) => {
 		setUser({...user, [e.target.name]: e.target.value});
-	  }
+	}
 
 	const submit = e => {
 		e.preventDefault();
@@ -39,20 +33,9 @@ export default function Login() {
 		})
 	};
 
-	useEffect(() => {
-		loginSchema.isValid(initialUser)
-		  .then(valid => {
-			setDisabled(!valid)
-		  })
-	  }, [suFormValues])
-
 	return (
 		<>
 		<h2>Login</h2>
-		<div className='errors'>
-                <div>{errors.username}</div>
-                <div>{errors.password}</div>
-            </div>
 		<form onSubmit={submit}>
 			<label>
 				Username:
@@ -77,5 +60,4 @@ export default function Login() {
 		</form>
 		</>
 	);
-
-    }
+}
