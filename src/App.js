@@ -4,7 +4,6 @@ import Login from "./Components/Login";
 import HomePage from './Components/HomePage'
 import SignUp from './Components/Signup'
 import "./App.css";
-import axios from 'axios'
 import formSchema from './validation/formSchema'
 import * as yup from "yup";
 
@@ -37,21 +36,6 @@ const [form, setForm] = useState(initialForm);
 const [suFormValues, setSUformValues] = useState(initialSUvalues); // this is an object
 const [formSUerrors, setSUerrors] = useState(initialSUformErrors); // this is an object
 const [disabled, setDisabled] = useState(initialDisabled); // this is a boolean
-
-
-//  AXIOS POST //
-  const postNewUser = (newUser) => {
-    axios
-      .post("http://localhost:3000/", newUser)
-      .then((response) => {
-        setSUformValues([response.data, ...suFormValues]);
-        setSUformValues(initialSUvalues);
-        setDisabled(true);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
 
 
   // EVENT HANDLERS //
