@@ -1,18 +1,69 @@
-import {React, useEffect} from 'react'
+import {React, useEffect, useState} from 'react'
 import { useHistory } from 'react-router-dom';
+import * as yup from 'yup'
 import axios from 'axios';
-// import formSchema from '../validation/formSchema'
+import formSchema from '../validation/formSchema'
 
+const initialDisabled = true;
 
-export default function SignUp(props) {
-    const { values, submit, change, disabled, errors } = props;
+const initialSUvalues = {
+    username: '', //textbox
+    email: '', //textbox
+    password: '', //textbox
+    role: false, // radio button
+    terms: false, // checkbox
+};
+
+const initialSUformErrors = {
+    username: '',
+    email: '',
+    password: '',
+    role: false,
+    terms: false,
+  };
+
+export default function SignUp() {
+
+    const [suFormValues, setSUformValues] = useState(initialSUvalues); // this is an object
+    const [formSUerrors, setSUerrors] = useState(initialSUformErrors); // this is an object
+    const [disabled, setDisabled] = useState(initialDisabled); // this is a boolean
     const { push } = useHistory();
+
+
+    const change = (name, value) => {
+        yup
+          .reach(formSchema, name) // search the schema for 'name'
+          .validate(value) // validate the entry (formValidation)
+          .then(() => {
+            setSUerrors({
+              ...formSUerrors,
+              [name]: "",
+            });
+          })
+          .catch((error) => {
+            setSUerrors({
+              ...formSUerrors,
+              // validation error from schema
+              [name]: error.errors,
+            });
+          });
+        setSUformValues({
+          ...suFormValues,
+          [name]: value,
+        });
+      };
+
+      useEffect(() => {
+    formSchema.isValid(suFormValues)
+      .then(valid => {
+        setDisabled(!valid)
+      })
+  }, [suFormValues])
 
     const onSubmit = (event) => {
         event.preventDefault(); // stops page refresh,
-        submit(); // invokes the submit function
         axios
-        .post("https://tt-24-use-my-tech-stuff.herokuapp.com/api/users/signup")
+        .post("https://tt-24-use-my-tech-stuff.herokuapp.com/api/users/signup", suFormValues)
         .then(res => {
           console.log('res', res);
           push("/login");
@@ -26,7 +77,7 @@ export default function SignUp(props) {
         const { name, value, type, checked } = event.target;
         const valueToUse = type === "checkbox" ? checked : value;
         change(name, valueToUse);
-        
+
     };
 
 
@@ -35,10 +86,10 @@ export default function SignUp(props) {
             <h3>Sign up for an Account</h3>
 
             <div className='errors'>
-                <div>{errors.username}</div>
-                <div>{errors.email}</div>
-                <div>{errors.password}</div>
-                <div>{errors.terms}</div>
+                <div>{formSUerrors.username}</div>
+                <div>{formSUerrors.email}</div>
+                <div>{formSUerrors.password}</div>
+                <div>{formSUerrors.terms}</div>
             </div>
 
             <div className='inputs'>
@@ -48,7 +99,7 @@ export default function SignUp(props) {
                         type='text'
                         placeholder='Choose a Username'
                         maxLength="30"
-                        value={values.username}
+                        value={suFormValues.username}
                         onChange={onChange}
                     />
                 </label>
@@ -58,7 +109,7 @@ export default function SignUp(props) {
                         name='email'
                         type='text'
                         maxLength="50"
-                        value={values.email}
+                        value={suFormValues.email}
                         onChange={onChange}
                     />
                 </label>
@@ -68,7 +119,7 @@ export default function SignUp(props) {
                         type='password'
                         name='password'
                         maxLength="30"
-                        value={values.password}
+                        value={suFormValues.password}
                         onChange={onChange}
                     />
                 </label>
@@ -77,8 +128,8 @@ export default function SignUp(props) {
                 <input
                     type="radio"
                     name="role"
-                    value="owner"
-                    checked={values.role === "owner"}
+                    value="true"
+                    checked={suFormValues.role === "true"}
                     onChange={onChange}
                 />
                 </label>
@@ -87,8 +138,8 @@ export default function SignUp(props) {
                 <input
                     type="radio"
                     name="role"
-                    value="renter"
-                    checked={values.role === "renter"}
+                    value="false"
+                    checked={suFormValues.role === "false"}
                     onChange={onChange}
                 />
                 </label>
@@ -97,7 +148,7 @@ export default function SignUp(props) {
                     <input
                         type='checkbox'
                         name='terms'
-                        checked={values.terms}
+                        checked={suFormValues.terms}
                         onChange={onChange}
                     />
                 </label>

@@ -26,6 +26,9 @@ export default function HomePage() {
     return (
     <div>
       <h2>Home Page</h2>
+      <ul>
+
+      </ul>
       <CreatePostForm/>
       <EditPostForm/>
       <Switch>
