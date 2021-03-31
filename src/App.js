@@ -114,14 +114,6 @@ return (
         </Route>
         <Route path="/signup">
             <SignUp values={suFormValues} submit={formSubmit} change={inputChange} disabled={disabled} errors={formSUerrors} />
-            {form.map((user, idx) => {
-              return (
-                <div key={idx}>
-                <h2>{user.name}</h2>
-                <p>{user.email}</p>
-                </div>
-              )
-            })}
           </Route>
         <Route path="/login">
           <Login/>
