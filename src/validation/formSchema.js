@@ -22,8 +22,6 @@ const formSchema = yup.object().shape({
     terms: yup
         .boolean()
         .required('Please agree to our legal terms and conditions')
-
-const loginSchema = yup.object().shape
 });
 
 export default formSchema;

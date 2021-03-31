@@ -1,12 +1,15 @@
-/* body {
+/* comment */
+
+.App {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background-color: #4f4f4f;
+  font-family: 'Arvo', serif;
 }
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+
+
+/* .NewClass {
+  margin: 0 auto;
+  background-color: #4f4f4f;
+  justify-content: center;
+  align-content: center;
 } */
