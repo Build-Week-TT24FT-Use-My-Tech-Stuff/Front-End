@@ -2,7 +2,10 @@ import {React} from 'react'
 import axios from 'axios';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import FormTheme from '../Themes/Theme'
 
+
+// LOGIC //
 const initialUser = {
 	username: '',
 	password: ''
@@ -34,30 +37,33 @@ export default function Login() {
 	};
 
 	return (
-		<>
-		<h2>Login</h2>
-		<form onSubmit={submit}>
-			<label>
-				Username:
-				<input
-					type="text"
-					name="username"
-					value={user.username}
-					onChange={change}
-				/>
-			</label>
-			<label>
-				Password:
-				<input
-					type="password"
-					name="password"
-					value={user.password}
-					onChange={change}
-				/>
-			</label>
-			<br/>
-			<button>Login</button>
-		</form>
-		</>
+		<FormTheme>
+			<h2>Login</h2>
+			<form onSubmit={submit}>
+				<label>
+					Username:
+					<input
+						type="text"
+						name="username"
+						value={user.username}
+						onChange={change}
+						placeholder='Enter Your Username'
+					/>
+				</label>
+				<br/>
+				<label>
+					Password:
+					<input
+						type="password"
+						name="password"
+						value={user.password}
+						onChange={change}
+						placeholder='Enter Your Password'
+					/>
+				</label>
+				<br/>
+				<button>Login</button>
+			</form>
+		</FormTheme>
 	);
 }

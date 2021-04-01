@@ -1,4 +1,5 @@
 import React from 'react';
+import FormTheme from '../Themes/Theme'
 
 
 
@@ -7,7 +8,7 @@ export default function CreatePostForm(props) {
 
     return(
 
-        <form onSubmit={submit} className='new-post'>
+        <FormTheme onSubmit={submit} className='new-post'>
             <h3>Post an Item for Rent</h3>
 
             <div className='errors'>
@@ -37,7 +38,6 @@ export default function CreatePostForm(props) {
             </label>
 
             <button>Post Item</button>
-        </form >
+        </FormTheme >
     )
-
 }

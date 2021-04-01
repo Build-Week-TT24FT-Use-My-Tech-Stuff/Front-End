@@ -1,7 +1,14 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
+import FormTheme from '../Themes/Theme'
 
+// Attempt to get textboxes to line up 
+// const BoxAlign = styled.div`
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: flex-end;
+// `
 
 
 export default function SignUp(props) {
@@ -31,16 +38,16 @@ export default function SignUp(props) {
 
 
     return (
-        <form className='sign-up-form' onSubmit={onSubmit}>
+        <FormTheme className='sign-up-form' onSubmit={onSubmit}>
             <h3>Sign up for an Account</h3>
-
             <div className='errors'>
                 <div>{errors.username}</div>
                 <div>{errors.email}</div>
                 <div>{errors.password}</div>
+                <div>{errors.role}</div>
                 <div>{errors.terms}</div>
             </div>
-
+            <br/>
             <div className='inputs'>
                 <label>Username:
                     <input
@@ -57,6 +64,7 @@ export default function SignUp(props) {
                     <input
                         name='email'
                         type='text'
+                        placeholder='Valid eMail Address'
                         maxLength="50"
                         value={values.email}
                         onChange={onChange}
@@ -67,6 +75,7 @@ export default function SignUp(props) {
                     <input
                         type='password'
                         name='password'
+                        placeholder='Choose a Password'
                         maxLength="30"
                         value={values.password}
                         onChange={onChange}
@@ -103,6 +112,6 @@ export default function SignUp(props) {
                 </label>
             </div>
             <button disabled={disabled}>Submit</button>
-        </form>
+        </FormTheme>
     )
 }

@@ -3,10 +3,21 @@ import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import Login from "./Components/Login";
 import HomePage from './Components/HomePage'
 import SignUp from './Components/Signup'
+// import NavBar from './Components/NavBar'
 import "./App.css";
 import axios from 'axios'
 import formSchema from './validation/formSchema'
 import * as yup from "yup";
+// import { styled } from 'styled-components'
+
+
+
+// Tim's Notes - 3/31@11:20pm
+// Why does background image not touch bottom of screen?
+// add logo to nav bar
+// make submit button spin when eligible
+//get <h1> title to use font: https://www.1001fonts.com/digital-dream-font.html and add typewriter effect
+
 
 // INITIALIZATIONS //
 const initialSUvalues = {
@@ -97,35 +108,37 @@ const formSubmit = () => {
 
 return (
     <Router>
-      <div className="App">
-        <nav>
-          <Link to="/">
-            Home
-          </Link>
-          <Link to="/signup">
-            Sign Up
-          </Link>
-          <Link to="/login">
-            Login
-          </Link>
-        </nav>
-        <Route exact path="/">
-          <HomePage/>
-        </Route>
-        <Route path="/signup">
-            <SignUp values={suFormValues} submit={formSubmit} change={inputChange} disabled={disabled} errors={formSUerrors} />
-            {form.map((user, idx) => {
-              return (
-                <div key={idx}>
-                <h2>{user.name}</h2>
-                <p>{user.email}</p>
-                </div>
-              )
-            })}
+      <div id="filler">
+        <div className="App">
+          <div className = "navBar">
+            <Link to="/">
+              Home
+            </Link>
+            <Link to="/signup">
+              Sign Up
+            </Link>
+            <Link to="/login">
+              Login
+            </Link>
+          </div>
+          <Route exact path="/">
+            <HomePage/>
           </Route>
-        <Route path="/login">
-          <Login/>
-        </Route>
+          <Route path="/signup">
+              <SignUp values={suFormValues} submit={formSubmit} change={inputChange} disabled={disabled} errors={formSUerrors} />
+              {form.map((user, idx) => {
+                return (
+                  <div key={idx}>
+                  <h2>{user.name}</h2>
+                  <p>{user.email}</p>
+                  </div>
+                )
+              })}
+            </Route>
+          <Route path="/login">
+            <Login/>
+          </Route>
+      </div>
     </div>
     </Router>
 	);
