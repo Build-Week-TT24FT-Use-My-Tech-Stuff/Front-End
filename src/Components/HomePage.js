@@ -1,10 +1,9 @@
 import React, { useState, useEffect} from 'react'
 import { Route, Switch, Redirect } from "react-router-dom";
-
 import axios from 'axios';
-
 import CreatePostForm from './CreatePostForm';
 import EditPostForm from './EditPostForm';
+import styled from 'styled-components'
 
 export default function HomePage() {
   const [items, setItems] = useState([]);
@@ -23,24 +22,36 @@ export default function HomePage() {
     setItems(posts);
   }
 
-    return (
-    <div>
-      <h2>Home Page</h2>
-      <ul>
 
-      </ul>
-      <CreatePostForm/>
-      <EditPostForm/>
-      <Switch>
-        <Route 
-          path='/create-post' 
-          render={props => <CreatePostForm {...props} addPost={addPost} />}>
-        </Route>
-        <Route path='/items/edit/:id'>
+//STYLING//
+  const SeperateCDforms = styled.div`
+  display: flexbox;
+  flex-direction: row;
+	margin: 0 auto;
+  display: in-line;
+`
+const TitleBox = styled.h1`
+    
+`
+
+  return (
+  <div>
+    <h1>Welcome to Rent my Tech!</h1>
+    <ul>
+
+    </ul>
+    <SeperateCDforms>
+          <CreatePostForm/>
           <EditPostForm/>
-        </Route>
-        
-      </Switch>
-      
-    </div>)
-  }
+    </SeperateCDforms>
+    <Switch>
+      <Route 
+        path='/create-post' 
+        render={props => <CreatePostForm {...props} addPost={addPost} />}>
+      </Route>
+      <Route path='/items/edit/:id'>
+        <EditPostForm/>
+      </Route>
+    </Switch>  
+  </div>)
+}

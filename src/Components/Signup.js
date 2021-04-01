@@ -3,6 +3,14 @@ import { useHistory } from 'react-router-dom';
 import * as yup from 'yup'
 import axios from 'axios';
 import formSchema from '../validation/formSchema'
+import FormTheme from '../Themes/Theme'
+
+// Attempt to get textboxes to line up 
+// const BoxAlign = styled.div`
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: flex-end;
+// `
 
 const initialDisabled = true;
 
@@ -65,8 +73,8 @@ export default function SignUp() {
         axios
         .post("https://tt-24-use-my-tech-stuff.herokuapp.com/api/users/signup", suFormValues)
         .then(res => {
-          console.log('res', res);
-          push("/login");
+        console.log('res', res);
+        push("/login");
         })
         .catch(err => {
           console.log(err.response);
@@ -82,16 +90,15 @@ export default function SignUp() {
 
 
     return (
-        <form className='sign-up-form' onSubmit={onSubmit}>
+        <FormTheme className='sign-up-form' onSubmit={onSubmit}>
             <h3>Sign up for an Account</h3>
-
             <div className='errors'>
                 <div>{formSUerrors.username}</div>
                 <div>{formSUerrors.email}</div>
                 <div>{formSUerrors.password}</div>
                 <div>{formSUerrors.terms}</div>
             </div>
-
+            <br/>
             <div className='inputs'>
                 <label>Username:
                     <input
@@ -108,6 +115,7 @@ export default function SignUp() {
                     <input
                         name='email'
                         type='text'
+                        placeholder='Valid eMail Address'
                         maxLength="50"
                         value={suFormValues.email}
                         onChange={onChange}
@@ -118,6 +126,7 @@ export default function SignUp() {
                     <input
                         type='password'
                         name='password'
+                        placeholder='Choose a Password'
                         maxLength="30"
                         value={suFormValues.password}
                         onChange={onChange}
@@ -154,6 +163,6 @@ export default function SignUp() {
                 </label>
             </div>
             <button disabled={disabled}>Submit</button>
-        </form>
+        </FormTheme>
     )
 }

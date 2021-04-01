@@ -3,7 +3,10 @@ import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import * as yup from 'yup'
 import loginSchema from '../validation/loginSchema'
+import FormTheme from '../Themes/Theme'
 
+
+// LOGIC //
 const initialUser = {
 	username: '',
 	password: ''
@@ -77,7 +80,7 @@ export default function Login() {
   }, [user])
 
 	return (
-		<>
+		<FormTheme>
 		<h2>Login</h2>
 		<div className='errors'>
                 <div>{formErrors.username}</div>
@@ -107,7 +110,7 @@ export default function Login() {
 			<br/>
 			<button disabled={disabled}>Login</button>
 		</form>
-		</>
+		</FormTheme>
 	);
 }
 
