@@ -8,6 +8,7 @@ import styled from 'styled-components'
 
 export default function HomePage() {
   const [items, setItems] = useState([]);
+  const [activeId, setActiveId] = useState(null);
 
    useEffect(() => {
     axios.get('https://tt-24-use-my-tech-stuff.herokuapp.com/api/items')
@@ -22,9 +23,6 @@ export default function HomePage() {
   const addPost = (posts) => {
     setItems(posts);
   }
-
-  const itemList = items.map(item => <Item key={item.item_id} name={item.item_name} description={item.item_description} price={item.item_price}/>)
-
 
 //STYLING//
   const SeperateCDforms = styled.div`
@@ -53,7 +51,7 @@ li{
           <EditPostForm/>
     </SeperateCDforms>
     <StyledList>
-    {itemList}
+    {items != 0 && items.map(item => <Item key = {item.item_id} item = {item} activeId = {activeId} setActiveId = {setActiveId}/>)}
     </StyledList>
     <Switch>
       <Route
