@@ -48,16 +48,16 @@ export default function CreatePostForm(props) {
                 <div>{errors}</div>
             </div>
             <label>Item:
-                <input name='item-name' type='text' value={item_name || ''} onChange={handleChange} />
+                <input name='item_name' type='text' value={item_name || ''} onChange={handleChange} />
             </label>
             <label>Item Description:
-                <input name='description' type='text' value={item_description || ''} onChange={handleChange} />
+                <input name='item_description' type='text' value={item_description || ''} onChange={handleChange} />
             </label>
             <label>Price:
-                <input name='price' type='text' value={item_price || 0} onChange={handleChange} />
+                <input name='item_price' type='text' value={item_price || 0} onChange={handleChange} />
             </label>
             <label>Rent Duration:
-                <select onChange={handleChange} value={rentDuration || false} name="duration">
+                <select onChange={handleChange} value={rentDuration || false} name="rentDuration">
                     <option value="">- Select an option -</option>
                     <option value={"1 week"}>1 week</option>
                     <option value={"2 weeks"}>2 weeks</option>
