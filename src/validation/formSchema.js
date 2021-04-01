@@ -18,7 +18,7 @@ const formSchema = yup.object().shape({
     role: yup
         .string()
         .required('Please Choose a Role!')
-        .oneOf (["owner","renter"], "Please choose an option of Owner or Renter"),
+        .oneOf (["true","false"], "Please choose an option of Owner or Renter"),
     terms: yup
         .boolean()
         .required('Please agree to our legal terms and conditions')

@@ -3,7 +3,7 @@
 @font-face {
   font-family: 'Digital dream Fat Skew';
   src: url('./Fonts/digital-dream.fat-skew.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
-}  
+}
 
 .App {
   background-image: url('./img/technology-background-texture.jpg');
@@ -30,6 +30,13 @@ h1 {
   font-size: x-large;
 }
 
+
+nav a {
+  font-size: 2rem;
+  padding: 2%;
+  color: rgb(179, 124, 23);
+  margin:2%;
+}
 /* .navBar{
   width: 25%;
   display:flex;
