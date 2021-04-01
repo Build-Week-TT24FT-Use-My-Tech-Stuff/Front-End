@@ -41,7 +41,7 @@ const TitleBox = styled.h1`
 
     </ul>
     <SeperateCDforms>
-          <CreatePostForm/>
+          <CreatePostForm />
           <EditPostForm/>
     </SeperateCDforms>
     <Switch>
