@@ -3,14 +3,15 @@ import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import Login from "./Components/Login";
 import HomePage from './Components/HomePage'
 import SignUp from './Components/Signup'
+import NavBar from './Components/NavBar'
 import "./App.css";
 
 export default function App() {
 
-return (
+  return (
     <Router>
       <div className="App">
-        <nav>
+        <NavBar>
           <Link to="/">
             Home
           </Link>
@@ -20,7 +21,7 @@ return (
           <Link to="/login">
             Login
           </Link>
-        </nav>
+        </NavBar>
         <Route exact path="/">
           <HomePage/>
         </Route>

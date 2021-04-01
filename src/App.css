@@ -1,7 +1,84 @@
+
+
+@font-face {
+  font-family: 'Digital dream Fat Skew';
+  src: url('./Fonts/digital-dream.fat-skew.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+}  
+
 .App {
+  background-image: url('./img/technology-background-texture.jpg');
+  background-image: center;
+  background-repeat: none;
+  background-size: cover;
+  font-family: 'Arvo';
   text-align: center;
+  margin-top: 4vh;
+  margin-bottom: 4vh;
+  margin-right: 10vh;
+  margin-left:10vh;
+  border:#DEB4EB inset 1.5vh;
+  border-radius: 20px;
+  padding-bottom: 90vh;
+  font-size: 62.5%;
 }
 
-nav *{
-  padding:2%;
+h1 {
+  color:black;
+  padding: 4vh;
+  font-weight: 800;
+  font-family: 'digital Dream Fat Skew';
+  font-size: x-large;
 }
+
+/* .navBar{
+  width: 25%;
+  display:flex;
+  margin-bottom: 10%;
+  justify-content: space-evenly;
+  width: 100%;
+  position:fixed;
+  background-color: #656161;
+  color: #C3B1B2;
+} */
+
+.logo {
+  width: 80%;
+}
+
+.errors {
+  color: #FA0909;
+  font-weight: 600;
+  opacity: 50%;
+  animation:blinkingText 1.2s infinite;
+}
+
+#filler {
+  background-color: black;
+}
+
+@keyframes blinkingText{
+  0% {color: red;}
+  50% {color: transparent;}
+  100% {color: red;}
+}
+
+input {
+  border:#DEB4EB inset .35vh;
+  border-radius: 15px;
+}
+
+button {
+  border:#DEB4EB inset .35vh;
+  border-radius: 50%;
+  background-color: #14E607 ;
+}
+
+/* .form {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  border:#BA2C2B inset 4px ;
+  max-width: 25%;
+  justify-content: center;
+  align-content: center;
+} */

@@ -1,4 +1,5 @@
 import React from 'react';
+import FormTheme from '../Themes/Theme'
 
 export default function EditPostForm(props) {
 
@@ -6,7 +7,7 @@ export default function EditPostForm(props) {
 
 return (
 
-    <form>
+    <FormTheme>
 
     <h3>Edit your Post</h3>
 
@@ -35,9 +36,8 @@ return (
             <option value={"4 weeks"}>4 weeks</option>
         </select>
     </label>
-
     <button>Edit Post</button>
-</form >
+</FormTheme >
 )
 
 }
