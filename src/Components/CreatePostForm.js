@@ -54,7 +54,7 @@ export default function CreatePostForm(props) {
                 <input name='item_description' type='text' value={item_description || ''} onChange={handleChange} />
             </label>
             <label>Price:
-                <input name='item_price' type='text' value={item_price || 0} onChange={handleChange} />
+                <input name='item_price' type='number' value={item_price || 0} onChange={handleChange} />
             </label>
             <label>Rent Duration:
                 <select onChange={handleChange} value={rentDuration || false} name="rentDuration">
