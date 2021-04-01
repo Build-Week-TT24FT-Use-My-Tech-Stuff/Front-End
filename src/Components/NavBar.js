@@ -1,7 +1,5 @@
-import {React} from 'react'
 import  styled  from 'styled-components';
-
-
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 // STYLING //
 const StyledNavBar = styled.div`
@@ -13,5 +11,25 @@ const StyledNavBar = styled.div`
     position:fixed;
     background-color: #656161;
     color: #C3B1B2;
-`
+// `
+
+export default function NavBar() {
+    return (
+        <Router>
+            <StyledNavBar>
+                <Route>
+                    <Link to="/">Home</Link>
+                </Route>
+                <Route>
+                    <Link to="/signup">Sign Up</Link>
+                </Route>
+                <Route>
+                    <Link to="/login">Login</Link>
+                </Route>
+            </StyledNavBar>
+        </Router>
+    )
+}
+
+
 

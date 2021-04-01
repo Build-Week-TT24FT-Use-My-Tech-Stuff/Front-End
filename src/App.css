@@ -1,7 +1,9 @@
+
+
 @font-face {
-  font-family: 'MyWebFont';
-  src: url('https://www.1001fonts.com/digital-dream-font.html') format('woff2');
-}
+  font-family: 'Digital dream Fat Skew';
+  src: url('./Fonts/digital-dream.fat-skew.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+}  
 
 .App {
   background-image: url('./img/technology-background-texture.jpg');
@@ -16,12 +18,16 @@
   margin-left:10vh;
   border:#DEB4EB inset 1.5vh;
   border-radius: 20px;
-  padding-bottom: 50vh;
+  padding-bottom: 90vh;
+  font-size: 62.5%;
 }
 
 h1 {
-  color:#FFFFFF;
-  font-size: 3vh;
+  color:black;
+  padding: 4vh;
+  font-weight: 800;
+  font-family: 'digital Dream Fat Skew';
+  font-size: x-large;
 }
 
 /* .navBar{
@@ -56,10 +62,6 @@ h1 {
   100% {color: red;}
 }
 
-img {
-
-}
-
 input {
   border:#DEB4EB inset .35vh;
   border-radius: 15px;
@@ -68,6 +70,7 @@ input {
 button {
   border:#DEB4EB inset .35vh;
   border-radius: 50%;
+  background-color: #14E607 ;
 }
 
 /* .form {

@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react'
-import { BrowserRouter as Router, Link, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import Login from "./Components/Login";
 import HomePage from './Components/HomePage'
 import SignUp from './Components/Signup'
-// import NavBar from './Components/NavBar'
+import NavBar from './Components/NavBar'
 import "./App.css";
 import axios from 'axios'
 import formSchema from './validation/formSchema'
@@ -12,7 +12,7 @@ import * as yup from "yup";
 
 
 
-// Tim's Notes - 3/31@11:20pm
+// Tim's Notes: 
 // Why does background image not touch bottom of screen?
 // add logo to nav bar
 // make submit button spin when eligible
@@ -110,17 +110,7 @@ return (
     <Router>
       <div id="filler">
         <div className="App">
-          <div className = "navBar">
-            <Link to="/">
-              Home
-            </Link>
-            <Link to="/signup">
-              Sign Up
-            </Link>
-            <Link to="/login">
-              Login
-            </Link>
-          </div>
+          <NavBar/>
           <Route exact path="/">
             <HomePage/>
           </Route>
