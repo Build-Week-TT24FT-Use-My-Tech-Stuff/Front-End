@@ -3,9 +3,12 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 // STYLING //
 const StyledNavBar = styled.div`
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
     width: 25%;
     display:flex;
-    margin-bottom: 10%;
+    margin-bottom: 5%;
     justify-content: space-evenly;
     width: 100%;
     position:fixed;
