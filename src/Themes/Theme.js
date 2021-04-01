@@ -1,7 +1,7 @@
 import  styled, { keyframes } from "styled-components";
 
 
-const FormTheme = styled.form`
+const FormTheme = styled.div`
     background-color: #000000;
 	margin: 0 auto;
 	display: flex;
