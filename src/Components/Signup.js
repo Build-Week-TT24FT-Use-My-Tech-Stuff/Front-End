@@ -5,7 +5,7 @@ import axios from 'axios';
 import formSchema from '../validation/formSchema'
 import FormTheme from '../Themes/Theme'
 
-// Attempt to get textboxes to line up 
+// Attempt to get textboxes to line up
 // const BoxAlign = styled.div`
 //     display: flex;
 //     flex-direction: column;
@@ -18,7 +18,7 @@ const initialSUvalues = {
     username: '', //textbox
     email: '', //textbox
     password: '', //textbox
-    role: false, // radio button
+    role: "", // radio button
     terms: false, // checkbox
 };
 
@@ -26,7 +26,7 @@ const initialSUformErrors = {
     username: '',
     email: '',
     password: '',
-    role: false,
+    role: "",
     terms: false,
   };
 
@@ -90,7 +90,8 @@ export default function SignUp() {
 
 
     return (
-        <FormTheme className='sign-up-form' onSubmit={onSubmit}>
+      <FormTheme>
+        <form className='sign-up-form' onSubmit={onSubmit}>
             <h3>Sign up for an Account</h3>
             <div className='errors'>
                 <div>{formSUerrors.username}</div>
@@ -163,6 +164,7 @@ export default function SignUp() {
                 </label>
             </div>
             <button disabled={disabled}>Submit</button>
-        </FormTheme>
+        </form>
+      </FormTheme>
     )
 }

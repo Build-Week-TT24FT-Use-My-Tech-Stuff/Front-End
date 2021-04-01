@@ -42,7 +42,8 @@ export default function CreatePostForm(props) {
 
     return(
 
-        <FormTheme onSubmit={handleSubmit} className='new-post'>
+        <FormTheme>
+          <form onSubmit={handleSubmit} className='new-post'>
             <h3>Post an Item for Rent</h3>
             <div className='errors'>
                 <div>{errors}</div>
@@ -51,7 +52,7 @@ export default function CreatePostForm(props) {
                 <input name='item_name' type='text' value={item_name || ''} onChange={handleChange} />
             </label>
             <label>Item Description:
-                <input name='item_description' type='text' value={item_description || ''} onChange={handleChange} />
+                <textarea  name='item_description' type='text' value={item_description || ''} onChange={handleChange} />
             </label>
             <label>Price:
                 <input name='item_price' type='number' value={item_price || 0} onChange={handleChange} />
@@ -66,6 +67,7 @@ export default function CreatePostForm(props) {
                 </select>
             </label>
             <button>Post Item</button>
+            </form>
         </FormTheme >
     )
 }
