@@ -6,6 +6,23 @@ import EditPostForm from './EditPostForm';
 import Item from './Item';
 import styled from 'styled-components'
 
+//STYLING//
+const SeperateCDforms = styled.div`
+display: flexbox;
+flex-direction: row;
+margin: 0 auto;
+display: in-line;
+`;
+
+const StyledList = styled.ul `
+font-size:2rem;
+color:white;
+li{
+margin:2%;
+background-color:black;
+border: 2px solid black;}`;
+
+
 export default function HomePage() {
   const [items, setItems] = useState([]);
   const [activeId, setActiveId] = useState(null);
@@ -23,24 +40,6 @@ export default function HomePage() {
   const addPost = (posts) => {
     setItems(posts);
   }
-
-//STYLING//
-  const SeperateCDforms = styled.div`
-  display: flexbox;
-  flex-direction: row;
-	margin: 0 auto;
-  display: in-line;
-`
-const TitleBox = styled.h1`
-
-`
-const StyledList = styled.ul `
-font-size:2rem;
-color:white;
-li{
-  margin:2%;
-  background-color:black;
-  border: 2px solid black;}`
 
 
   return (
