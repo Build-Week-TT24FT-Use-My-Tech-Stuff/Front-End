@@ -1,10 +1,27 @@
 import React, { useState, useEffect} from 'react'
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import axios from 'axios';
 import CreatePostForm from './CreatePostForm';
 import EditPostForm from './EditPostForm';
 import Item from './Item';
 import styled from 'styled-components'
+
+//STYLING//
+const SeperateCDforms = styled.div`
+display: flexbox;
+flex-direction: row;
+margin: 0 auto;
+display: in-line;
+`;
+
+const StyledList = styled.ul `
+font-size:2rem;
+color:white;
+li{
+margin:2%;
+background-color:black;
+border: 2px solid black;}`;
+
 
 export default function HomePage() {
   const [items, setItems] = useState([]);
@@ -24,24 +41,6 @@ export default function HomePage() {
     setItems(posts);
   }
 
-//STYLING//
-  const SeperateCDforms = styled.div`
-  display: flexbox;
-  flex-direction: row;
-	margin: 0 auto;
-  display: in-line;
-`
-const TitleBox = styled.h1`
-
-`
-const StyledList = styled.ul `
-font-size:2rem;
-color:white;
-li{
-  margin:2%;
-  background-color:black;
-  border: 2px solid black;}`
-
 
   return (
   <div>
@@ -51,7 +50,7 @@ li{
           <EditPostForm/>
     </SeperateCDforms>
     <StyledList>
-    {items != 0 && items.map(item => <Item key = {item.item_id} item = {item} activeId = {activeId} setActiveId = {setActiveId}/>)}
+    {items !== 0 && items.map(item => <Item key = {item.item_id} item = {item} activeId = {activeId} setActiveId = {setActiveId}/>)}
     </StyledList>
     <Switch>
       <Route

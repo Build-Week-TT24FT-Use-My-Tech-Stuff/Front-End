@@ -30,8 +30,8 @@ export default function Item(props) {
       <div>
           {item.item_description}  ${item.item_price}
       </div>
-      {activeId == item.item_id && <EditPostForm values = {item} setActiveId = {setActiveId}/>}
-      {activeId != item.item_id &&  <div className="btn-group">
+      {activeId === item.item_id && <EditPostForm values = {item} setActiveId = {setActiveId}/>}
+      {activeId !== item.item_id &&  <div className="btn-group">
         <button type="button" onClick={handleClickEdit}>
           Edit {props.name}
         </button>
