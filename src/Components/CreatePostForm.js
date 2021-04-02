@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import uuid from 'react-uuid';
+import axiosWithAuth from '../helpers/axiosWithAuth.js';
 import FormTheme from '../Themes/Theme'
 
 export default function CreatePostForm(props) {
@@ -9,11 +9,9 @@ export default function CreatePostForm(props) {
     const {push} = useHistory;
 
     const [newPost, setNewPost] = useState({
-      item_id: '',
-      item_name: '',
       item_description: '',
+      item_name: '',
       item_price: 0,
-      rentDuration: false
     });
 
     const handleChange = (e) => {
@@ -25,16 +23,19 @@ export default function CreatePostForm(props) {
 
     const handleSubmit = (e) => {
       e.preventDefault();
-      const id = uuid();
-      newPost['id'] = id;
-      axios.post('https://tt-24-use-my-tech-stuff.herokuapp.com/api/items/item', newPost)
+      const createPost = {
+        ...newPost,
+        'item_price': Number.parseInt(newPost.item_price, 10)
+      };
+      axiosWithAuth().post('/items/item', createPost)
         .then(res => {
           console.log('res', res);
           props.addPost(res.data);
           push('/items');
         })
         .catch(err => {
-          console.log(err);
+          console.log(err.response);
+          console.log(createPost)
         })
     }
 
