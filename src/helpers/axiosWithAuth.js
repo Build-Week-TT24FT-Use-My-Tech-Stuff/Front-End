@@ -7,7 +7,7 @@ const axiosWithAuth = () => {
     return axios.create({
         baseURL:'https://tt-24-use-my-tech-stuff.herokuapp.com/api',
         headers:{
-            authorization:localStorage.getItem("token")
+            'authorization':localStorage.getItem("token")
         }
     })
 }
