@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react'
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import axios from 'axios';
 import CreatePostForm from './CreatePostForm';
 import EditPostForm from './EditPostForm';
@@ -51,7 +51,7 @@ li{
           <EditPostForm/>
     </SeperateCDforms>
     <StyledList>
-    {items != 0 && items.map(item => <Item key = {item.item_id} item = {item} activeId = {activeId} setActiveId = {setActiveId}/>)}
+    {items !== 0 && items.map(item => <Item key = {item.item_id} item = {item} activeId = {activeId} setActiveId = {setActiveId}/>)}
     </StyledList>
     <Switch>
       <Route
